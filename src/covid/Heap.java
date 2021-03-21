@@ -149,7 +149,7 @@ public class Heap {
 	 * @return the subject next in line to receive the first dose of the vaccine.
 	 */
     public Subject findMax(){
-			// your code comes here
+		// your code comes here
 		if ( size >= 1)
 			return subjects[1];
 		return null;
@@ -162,12 +162,12 @@ public class Heap {
 	 * @return the subject next in line to receive the first dose of the vaccine.
 	 */
     public Subject extractMax() {
-			// your code comes here
-			Subject max = findMax();
-			subjects[1] = subjects[size]; // 1 and not 0 since x is dummy index
-			size--;
-			percolateDown(1);
-			return max;
+		// your code comes here
+		Subject max = findMax();
+		subjects[1] = subjects[size]; // 1 and not 0 since x is dummy index
+		size--;
+		percolateDown(1);
+		return max;
     }
     
     public static void main (String[] args){
