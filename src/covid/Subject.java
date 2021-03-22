@@ -20,7 +20,7 @@ public class Subject {
 	 * Compares this subject to another subject.
 	 * This subject is considered smaller than the other subject if and only if
 	 * the age of this subject is smaller than the other customer or, if the ages are equal 
-	 * then the name of this subject is smaller in the lexicographic ordering than the name of the other subject.
+	 * then the name of this subject is larger in the lexicographic ordering than the name of the other subject.
 	 * 
 	 * If this subject is smaller returns a negative number. If this subject is bigger return a positive number.
 	 * If the customers are equal return 0.

@@ -77,7 +77,7 @@ public class COVIDSimulation {
 		 * Joseph Douglas, age: 61
 		 * Alice Douglas, age: 60
 		 * Jubal Harshaw, age: 45
-		 * Jill Boardman, age: 26
+		 * Michael Valentine, age: 26
 		 * Null
 		 * 
 	     */
