@@ -164,7 +164,9 @@ public class Heap {
     public Subject extractMax() {
 		// your code comes here
 		Subject max = findMax();
-		subjects[1] = subjects[size]; // 1 and not 0 since x is dummy index
+		if (max == null) return null; // Should return null if the heap is empty.
+
+		subjects[1] = subjects[size]; // 1 and not 0 since 0 is a dummy index
 		size--;
 		percolateDown(1);
 		return max;
