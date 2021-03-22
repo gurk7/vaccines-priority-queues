@@ -54,7 +54,6 @@ public class Queue {
 	
 	/**
 	 * Adds a new subject to the back of the queue
-	 * Should throw a RuntimeException if the array is full.
 	 * 
 	 * If at any point the queue becomes full as a result of inserting too many subjects, 
      * then the size of the array should be doubled to handle extra subjects.
@@ -67,20 +66,18 @@ public class Queue {
 	public void enqueue(Subject e){
 		// your code comes here
 
-		//EdgeCase - the Queue (array) is full. RuntimeException is thrown
-		if (IsQueueFull()) {
-			throw new RuntimeException("Queue is Full");
-		}
+		// EdgeCase - the Queue (array) is full.
+		// The size of the array should be doubled to handle extra subjects.
+		// Instead of throwing a RunTimeException
+		if (IsQueueFull()) ResizeQueue();
 
 		// Queue is not full
 		cyclicSubjects[(front + size) % cyclicSubjects.length] = e;
 		size++;
 
-		if (IsQueueFull()) {
-			//If at any point the queue becomes full as a result of inserting too many subjects,
-			//Then the size of the array should be doubled to handle extra subjects.
-			ResizeQueue();
-		}
+		// If at any point the queue becomes full as a result of inserting too many subjects,
+		// Then the size of the array should be doubled to handle extra subjects.
+		if (IsQueueFull()) ResizeQueue();
 
 	}
 
@@ -89,10 +86,10 @@ public class Queue {
 	}
 
 	private void ResizeQueue() {
-		//Can also be implemented with mem copy (Arrays.copy)
+		// Can also be implemented with mem copy (Arrays.copy)
 		Subject[] copySubjects = new Subject[cyclicSubjects.length * 2];
 
-		//Can also be implements with mem copy
+		// Can also be implements with mem copy
 		for (int i=0; i < size; i++) {
 			copySubjects[i] = cyclicSubjects[i + front % cyclicSubjects.length];
 		}
