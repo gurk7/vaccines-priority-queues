@@ -109,18 +109,19 @@ public class Heap {
      */
     public void insert(Subject e){
 		// your code comes here
-		//Should throw a RuntimeException if the array is full.
-		if (isHeapFull()) ResizeHeap();
+		// Instead of throwing a RuntimeException if the array is full.
+		// The size of the array should be doubled to handle extra subjects.
+		if (isHeapFull()) resizeHeap();
 
 		subjects[++size] = e;
 		percolateUp(size);
 
-		//If at any point the array becomes full as a result of inserting too many subjects,
-		//then the size of the array should be doubled to handle extra subjects.
-		if(isHeapFull()) ResizeHeap();
+		// If at any point the array becomes full as a result of inserting too many subjects,
+		// then the size of the array should be doubled to handle extra subjects.
+		if(isHeapFull()) resizeHeap();
     }
 
-    private void ResizeHeap() {
+    private void resizeHeap() {
 		Subject[] copyArray = new Subject[2 * subjects.length - 1]; //minus one since subjects[0] was a dummy index
 		for(int i=1; i < subjects.length; i++) {
 			copyArray[i] = subjects[i];

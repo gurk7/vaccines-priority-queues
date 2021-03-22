@@ -21,8 +21,7 @@ public class COVIDSimulation {
 		heap = new Heap(capacity);
 		q = new Queue(capacity);
 	}
-	
-	
+
 	/**
 	 * Adds a new Subject to the data structure.
 	 * The Subject is entered to the heap, according to its age, to wait for the first dose of the vaccine

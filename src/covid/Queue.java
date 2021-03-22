@@ -69,7 +69,7 @@ public class Queue {
 		// EdgeCase - the Queue (array) is full.
 		// The size of the array should be doubled to handle extra subjects.
 		// Instead of throwing a RunTimeException
-		if (IsQueueFull()) ResizeQueue();
+		if (isQueueFull()) resizeQueue();
 
 		// Queue is not full
 		cyclicSubjects[(front + size) % cyclicSubjects.length] = e;
@@ -77,21 +77,21 @@ public class Queue {
 
 		// If at any point the queue becomes full as a result of inserting too many subjects,
 		// Then the size of the array should be doubled to handle extra subjects.
-		if (IsQueueFull()) ResizeQueue();
+		if (isQueueFull()) resizeQueue();
 
 	}
 
-	private boolean IsQueueFull() {
+	private boolean isQueueFull() {
 		return cyclicSubjects.length == size;
 	}
 
-	private void ResizeQueue() {
+	private void resizeQueue() {
 		// Can also be implemented with mem copy (Arrays.copy)
 		Subject[] copySubjects = new Subject[cyclicSubjects.length * 2];
 
 		// Can also be implements with mem copy
 		for (int i=0; i < size; i++) {
-			copySubjects[i] = cyclicSubjects[i + front % cyclicSubjects.length];
+			copySubjects[i] = cyclicSubjects[(i + front) % cyclicSubjects.length];
 		}
 
 		front = 0;
@@ -112,26 +112,26 @@ public class Queue {
      */
 	public boolean remove(String name){
 		// your code comes here
-		int subjectIndex = GetIndex(name);
+		int subjectIndex = getIndex(name);
 
-		//If such a Subject does not exist returns false.
+		// If such a Subject does not exist returns false.
 		if (subjectIndex == -1) return false;
 
-		//The order rest of the Subjects should have the same order after removal.
-		FixArrayHole(subjectIndex);
+		// The order rest of the Subjects should have the same order after removal.
+		fixArrayHole(subjectIndex);
 		size--;
 		return true; // Subject was removed
 	}
 
-	private int GetIndex(String name) {
+	private int getIndex(String name) {
 		for (int i = 0; i < size; i++) {
-			if (cyclicSubjects[i + front % cyclicSubjects.length].name.equals(name))
-				return i + front % cyclicSubjects.length;
+			if (cyclicSubjects[(i + front) % cyclicSubjects.length].name.equals(name))
+				return (i + front) % cyclicSubjects.length;
 		}
-		return -1; //Name is not found in the queue
+		return -1; // Name is not found in the queue
 	}
 
-	private void FixArrayHole(int holeIndex) {
+	private void fixArrayHole(int holeIndex) {
 		int rear = (front + size) %  cyclicSubjects.length;
 		while(holeIndex != rear) {
 			cyclicSubjects[holeIndex % cyclicSubjects.length] = cyclicSubjects[(holeIndex +1) % cyclicSubjects.length];
