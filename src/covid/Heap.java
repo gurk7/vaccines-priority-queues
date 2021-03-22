@@ -37,12 +37,12 @@ public class Heap {
 	public Heap(Subject[] arr) {
 		// your code comes here
 
-		//index 0 is empty (dummy)
+		// Index 0 is empty (dummy). (Can also be used with mem copy)
 		Subject[] copy = new Subject[arr.length+1];
 		for(int i=0; i < arr.length; i++) {
 			copy[i+1] = arr[i];
 		}
-		//copy[0] is empty - dummy index
+		// copy[0] is empty - dummy index
 		subjects = copy;
 		size = arr.length;
 
@@ -51,8 +51,8 @@ public class Heap {
 		}
 	}
 
-	//Move a node down the tree, as long as needed,
-	//Until it reaches the correct level.
+	// Move a node down the tree, as long as needed,
+	// Until it reaches the correct level.
 	private void percolateDown(int i) {
 		int k = getMaximalChildIndex(i);
 
